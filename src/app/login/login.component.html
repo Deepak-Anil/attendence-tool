@@ -1,0 +1,21 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="onLogin(username.value, password.value)">
+    <div class="input-group">
+      <label for="username">Username:</label>
+      <input id="username" #username type="text" placeholder="Enter your username" required />
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input id="password" #password type="password" placeholder="Enter your password" required />
+    </div>
+
+    <button type="submit">Login</button>
+
+    <!-- Error message if login fails -->
+    <div *ngIf="loginError" class="error-message">
+      Invalid username or password!
+    </div>
+  </form>
+</div>
