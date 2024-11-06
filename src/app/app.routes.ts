@@ -8,7 +8,9 @@ import { StudentComponent } from './student/student.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
-    { path: 'admin', component: AdminComponent },  // Placeholder for Admin Dashboard
-    { path: 'faculty', component: FacultyComponent },  // Placeholder for Faculty Dashboard
-    { path: 'student', component: StudentComponent }  // Placeholder for Student Dashboard
+    { path: 'home', component: HomeComponent },
+    { path: 'admin', component: AdminComponent },
+    { path: 'faculty', component: FacultyComponent },
+    { path: 'student', component: StudentComponent },
+    { path: '**', redirectTo: '' }
 ];

@@ -1,6 +1,62 @@
-<div class="container">
-  <h1>Admin Dashboard</h1>
-  <p>Welcome, Admin! Manage users and attendance here.</p>
-  <button routerLink="/faculty/faculty.component.html">Go to Faculty Page</button>
-  <button routerLink="/">Logout</button>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Admin Dashboard</h1>
+      <div class="user-info">
+        <span class="user-name">Admin</span>
+        <button routerLink="/" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-content">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-users"></i>
+        <h3>Total Students</h3>
+        <p class="stat-number">150</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>Total Faculty</h3>
+        <p class="stat-number">12</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-book"></i>
+        <h3>Total Courses</h3>
+        <p class="stat-number">8</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-clock"></i>
+        <h3>Active Sessions</h3>
+        <p class="stat-number">5</p>
+      </div>
+    </div>
+
+    <div class="action-cards">
+      <div class="action-card">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+          <button class="action-btn">
+            <i class="fas fa-user-plus"></i>
+            Add New Student
+          </button>
+          <button class="action-btn">
+            <i class="fas fa-user-tie"></i>
+            Add New Faculty
+          </button>
+          <button class="action-btn">
+            <i class="fas fa-book-medical"></i>
+            Add New Course
+          </button>
+          <button class="action-btn">
+            <i class="fas fa-file-alt"></i>
+            Generate Reports
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

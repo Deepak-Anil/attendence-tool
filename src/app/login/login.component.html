@@ -1,21 +1,54 @@
-<div class="login-container">
-  <h2>Login</h2>
-  <form (ngSubmit)="onLogin(username.value, password.value)">
-    <div class="input-group">
-      <label for="username">Username:</label>
-      <input id="username" #username type="text" placeholder="Enter your username" required />
+<div class="login-wrapper">
+  <div class="login-container">
+    <div class="logo-section">
+      <h1>Student Attendance</h1>
+      <p class="subtitle">Management System</p>
     </div>
+    
+    <form (ngSubmit)="onLogin(username.value, password.value)" class="login-form">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user"></i>
+          <input 
+            id="username" 
+            #username 
+            type="text" 
+            placeholder="Enter your username"
+            required 
+          />
+        </div>
+      </div>
 
-    <div class="input-group">
-      <label for="password">Password:</label>
-      <input id="password" #password type="password" placeholder="Enter your password" required />
+      <div class="input-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input 
+            id="password" 
+            #password 
+            type="password" 
+            placeholder="Enter your password"
+            required 
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="login-button">
+        Login
+      </button>
+
+      <div *ngIf="loginError" class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        Invalid username or password!
+      </div>
+    </form>
+
+    <div class="login-footer">
+      <p>Demo Credentials:</p>
+      <small>Admin: admin/admin123</small>
+      <small>Faculty: faculty1/faculty123</small>
+      <small>Student: student1/student123</small>
     </div>
-
-    <button type="submit">Login</button>
-
-    <!-- Error message if login fails -->
-    <div *ngIf="loginError" class="error-message">
-      Invalid username or password!
-    </div>
-  </form>
+  </div>
 </div>

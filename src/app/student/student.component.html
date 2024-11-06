@@ -1,10 +1,62 @@
-<div class="student-container">
-  <h1>Student Dashboard</h1>
-  <p>Welcome, Student! Here you can view your attendance and other relevant information.</p>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Student Dashboard</h1>
+      <div class="user-info">
+        <span class="user-name">Student</span>
+        <button routerLink="/" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </header>
 
-  <div class="actions">
-    <button (click)="viewAttendance()">View Attendance</button>
-    <button (click)="viewGrades()">View Grades</button>
-    <button routerLink="/">Logout</button>
+  <div class="dashboard-content">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>Attendance Rate</h3>
+        <p class="stat-number">85%</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-book"></i>
+        <h3>Total Courses</h3>
+        <p class="stat-number">6</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-clock"></i>
+        <h3>Classes Today</h3>
+        <p class="stat-number">3</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-star"></i>
+        <h3>Performance</h3>
+        <p class="stat-number">A</p>
+      </div>
+    </div>
+
+    <div class="action-cards">
+      <div class="action-card">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+          <button class="action-btn" (click)="viewAttendance()">
+            <i class="fas fa-chart-bar"></i>
+            View Attendance
+          </button>
+          <button class="action-btn" (click)="viewGrades()">
+            <i class="fas fa-graduation-cap"></i>
+            View Grades
+          </button>
+          <button class="action-btn">
+            <i class="fas fa-calendar-alt"></i>
+            Class Schedule
+          </button>
+          <button class="action-btn">
+            <i class="fas fa-bell"></i>
+            Notifications
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

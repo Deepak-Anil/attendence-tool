@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-faculty',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './faculty.component.html',
   styleUrl: './faculty.component.scss'
 })
