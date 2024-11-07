@@ -4,7 +4,7 @@
       <h1>Student Dashboard</h1>
       <div class="user-info">
         <span class="user-name">Student</span>
-        <button routerLink="/" class="logout-btn">
+        <button (click)="logout()" class="logout-btn">
           <i class="fas fa-sign-out-alt"></i> Logout
         </button>
       </div>
@@ -15,23 +15,60 @@
     <div class="stats-grid">
       <div class="stat-card">
         <i class="fas fa-calendar-check"></i>
-        <h3>Attendance Rate</h3>
+        <h3>Overall Attendance</h3>
         <p class="stat-number">85%</p>
       </div>
       <div class="stat-card">
         <i class="fas fa-book"></i>
-        <h3>Total Courses</h3>
-        <p class="stat-number">6</p>
+        <h3>Current Courses</h3>
+        <p class="stat-number">5</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Current CGPA</h3>
+        <p class="stat-number">8.6</p>
       </div>
       <div class="stat-card">
         <i class="fas fa-clock"></i>
         <h3>Classes Today</h3>
-        <p class="stat-number">3</p>
+        <p class="stat-number">4</p>
       </div>
-      <div class="stat-card">
-        <i class="fas fa-star"></i>
-        <h3>Performance</h3>
-        <p class="stat-number">A</p>
+    </div>
+
+    <div class="content-grid">
+      <div class="content-card">
+        <h3><i class="fas fa-chart-line"></i> Course Performance</h3>
+        <div class="course-list">
+          <div *ngFor="let course of coursePerformance" class="course-item">
+            <div class="course-info">
+              <span class="course-name">{{course.name}}</span>
+              <div class="progress-bar">
+                <div class="progress" [style.width]="course.attendance + '%'"
+                     [ngClass]="{'good': course.attendance >= 75, 
+                                'warning': course.attendance < 75 && course.attendance >= 60,
+                                'danger': course.attendance < 60}">
+                  {{course.attendance}}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3><i class="fas fa-calendar-alt"></i> Today's Schedule</h3>
+        <div class="schedule-list">
+          <div *ngFor="let class of todayClasses" class="schedule-item">
+            <div class="time">{{class.time}}</div>
+            <div class="class-info">
+              <div class="class-name">{{class.subject}}</div>
+              <div class="class-details">
+                <span><i class="fas fa-user"></i> {{class.teacher}}</span>
+                <span><i class="fas fa-location-dot"></i> {{class.room}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -47,13 +84,13 @@
             <i class="fas fa-graduation-cap"></i>
             View Grades
           </button>
-          <button class="action-btn">
+          <button class="action-btn" (click)="viewSchedule()">
             <i class="fas fa-calendar-alt"></i>
             Class Schedule
           </button>
-          <button class="action-btn">
-            <i class="fas fa-bell"></i>
-            Notifications
+          <button class="action-btn" (click)="viewAssignments()">
+            <i class="fas fa-tasks"></i>
+            Assignments
           </button>
         </div>
       </div>

@@ -1,26 +1,35 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { RouterLink, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-faculty',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './faculty.component.html',
-  styleUrl: './faculty.component.scss'
+  styleUrls: ['./faculty.component.scss', '../shared/_dashboard.scss']
 })
 export class FacultyComponent {
-  attendanceForm: FormGroup;
-  courses = ['Math', 'Science', 'History'];
+  constructor(private router: Router) {}
 
-  constructor(private fb: FormBuilder) {
-    this.attendanceForm = this.fb.group({
-      course: [''],
-      date: ['']
-    });
+  viewAttendance() {
+    this.router.navigate(['/faculty/mark-attendance']);
   }
 
-  submitAttendance() {
-    console.log('Attendance Data:', this.attendanceForm.value);
+  viewReports() {
+    // Add reports view logic
+  }
+
+  viewSchedule() {
+    // Add schedule view logic
+  }
+
+  viewStudents() {
+    // Add students view logic
+  }
+
+  logout() {
+    localStorage.clear(); // Clear any stored session data
+    this.router.navigate(['/']);
   }
 }

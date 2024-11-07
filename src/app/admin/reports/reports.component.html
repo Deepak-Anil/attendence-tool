@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Generate Reports</h1>
+      <div class="user-info">
+        <button routerLink="/admin" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-content">
+    <div class="form-card">
+      <form (ngSubmit)="onSubmit()" #reportsForm="ngForm">
+        <div class="form-group">
+          <label for="reportType">Report Type</label>
+          <select 
+            id="reportType"
+            name="reportType"
+            [(ngModel)]="reportFilters.reportType"
+            required
+          >
+            <option value="">Select Report Type</option>
+            <option value="attendance">Attendance Report</option>
+            <option value="course">Course Report</option>
+            <option value="faculty">Faculty Report</option>
+            <option value="student">Student Report</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department</label>
+          <select 
+            id="department"
+            name="department"
+            [(ngModel)]="reportFilters.department"
+          >
+            <option value="">All Departments</option>
+            <option value="computer-science">Computer Science</option>
+            <option value="mathematics">Mathematics</option>
+            <option value="physics">Physics</option>
+          </select>
+        </div>
+
+        <div class="date-range">
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input 
+              type="date" 
+              id="startDate"
+              name="startDate"
+              [(ngModel)]="reportFilters.startDate"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input 
+              type="date" 
+              id="endDate"
+              name="endDate"
+              [(ngModel)]="reportFilters.endDate"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Course</label>
+          <select 
+            id="course"
+            name="course"
+            [(ngModel)]="reportFilters.course"
+          >
+            <option value="">All Courses</option>
+            <option value="cs101">CS101 - Introduction to Programming</option>
+            <option value="math201">MATH201 - Advanced Calculus</option>
+            <option value="phy301">PHY301 - Quantum Mechanics</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="faculty">Faculty</label>
+          <select 
+            id="faculty"
+            name="faculty"
+            [(ngModel)]="reportFilters.faculty"
+          >
+            <option value="">All Faculty</option>
+            <option value="prof1">Dr. Smith</option>
+            <option value="prof2">Dr. Johnson</option>
+            <option value="prof3">Dr. Williams</option>
+          </select>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-file-export"></i> Generate Report
+          </button>
+          <button type="button" class="secondary-btn">
+            <i class="fas fa-download"></i> Download PDF
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

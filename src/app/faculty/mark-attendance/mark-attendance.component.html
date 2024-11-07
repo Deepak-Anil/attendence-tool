@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Mark Attendance</h1>
+      <div class="user-info">
+        <button routerLink="/faculty" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-content">
+    <div class="form-card">
+      <div class="form-group">
+        <label for="course">Select Course</label>
+        <select id="course" [(ngModel)]="selectedCourse" required>
+          <option value="">Select a course</option>
+          <option *ngFor="let course of courses" [value]="course">{{course}}</option>
+        </select>
+      </div>
+
+      <div class="attendance-controls">
+        <button class="action-btn" (click)="markAll(true)">Mark All Present</button>
+        <button class="action-btn" (click)="markAll(false)">Mark All Absent</button>
+      </div>
+
+      <div class="attendance-list">
+        <div *ngFor="let student of students" class="attendance-item">
+          <span>{{student.name}}</span>
+          <div class="attendance-toggle">
+            <label class="toggle">
+              <input type="checkbox" [(ngModel)]="student.present">
+              <span class="slider">{{student.present ? 'Present' : 'Absent'}}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button class="submit-btn" (click)="submitAttendance()">Submit Attendance</button>
+    </div>
+  </div>
+</div> 

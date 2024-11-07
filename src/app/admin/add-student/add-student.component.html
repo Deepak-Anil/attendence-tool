@@ -1,0 +1,116 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Add New Student</h1>
+      <div class="user-info">
+        <button routerLink="/admin" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-content">
+    <div class="form-card">
+      <form (ngSubmit)="onSubmit(studentForm)" #studentForm="ngForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input 
+            type="text" 
+            id="name"
+            name="name"
+            [(ngModel)]="student.name"
+            required
+            #name="ngModel"
+          >
+          <div class="error-message" *ngIf="name.invalid && (name.dirty || name.touched)">
+            Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email"
+            name="email"
+            [(ngModel)]="student.email"
+            required
+            email
+            #email="ngModel"
+          >
+          <div class="error-message" *ngIf="email.invalid && (email.dirty || email.touched)">
+            Please enter a valid email
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rollNumber">Roll Number</label>
+          <input 
+            type="text" 
+            id="rollNumber"
+            name="rollNumber"
+            [(ngModel)]="student.rollNumber"
+            required
+            #rollNumber="ngModel"
+          >
+          <div class="error-message" *ngIf="rollNumber.invalid && (rollNumber.dirty || rollNumber.touched)">
+            Roll number is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Course</label>
+          <select 
+            id="course"
+            name="course"
+            [(ngModel)]="student.course"
+            required
+            #course="ngModel"
+          >
+            <option value="">Select Course</option>
+            <option value="btech">B.Tech</option>
+            <option value="mtech">M.Tech</option>
+            <option value="bca">BCA</option>
+            <option value="mca">MCA</option>
+          </select>
+          <div class="error-message" *ngIf="course.invalid && (course.dirty || course.touched)">
+            Please select a course
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="semester">Semester</label>
+          <select 
+            id="semester"
+            name="semester"
+            [(ngModel)]="student.semester"
+            required
+            #semester="ngModel"
+          >
+            <option value="">Select Semester</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+            <option value="3">3rd Semester</option>
+            <option value="4">4th Semester</option>
+            <option value="5">5th Semester</option>
+            <option value="6">6th Semester</option>
+            <option value="7">7th Semester</option>
+            <option value="8">8th Semester</option>
+          </select>
+          <div class="error-message" *ngIf="semester.invalid && (semester.dirty || semester.touched)">
+            Please select a semester
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="submit-btn"
+          [disabled]="!studentForm.form.valid"
+        >
+          <i class="fas fa-plus"></i> Add Student
+        </button>
+      </form>
+    </div>
+  </div>
+</div> 

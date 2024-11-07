@@ -1,0 +1,52 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Academic Performance</h1>
+      <div class="user-info">
+        <button (click)="goBack()" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-content">
+    <div class="content-card">
+      <div class="grades-summary">
+        <h3><i class="fas fa-graduation-cap"></i> Grade Report</h3>
+        
+        <div class="grades-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Assignments (30%)</th>
+                <th>Midterm (30%)</th>
+                <th>Final (40%)</th>
+                <th>Grade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of grades">
+                <td>{{item.subject}}</td>
+                <td>{{item.assignments}}</td>
+                <td>{{item.midterm}}</td>
+                <td>{{item.final}}</td>
+                <td>
+                  <span class="grade-badge" 
+                        [ngClass]="{
+                          'excellent': item.grade.startsWith('A'),
+                          'good': item.grade.startsWith('B'),
+                          'average': item.grade.startsWith('C')
+                        }">
+                    {{item.grade}}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

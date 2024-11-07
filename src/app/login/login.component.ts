@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   loginError: boolean = false;
 
-  validCredentials: { [key: string]: string } = {
+  validCredentials = {
     admin: 'admin123',
     faculty1: 'faculty123',
     student1: 'student123'
@@ -23,15 +23,23 @@ export class LoginComponent {
 
   onLogin(username: string, password: string) {
     if (this.validCredentials[username as keyof typeof this.validCredentials] === password) {
-      if (username === 'admin') {
-        this.router.navigate(['/admin']);
-      } else if (username.startsWith('faculty')) {
-        this.router.navigate(['/faculty']);
-      } else {
-        this.router.navigate(['/student']);
+      this.loginError = false;
+      
+      switch(username) {
+        case 'admin':
+          this.router.navigate(['/admin']);
+          break;
+        case 'faculty1':
+          this.router.navigate(['/faculty/dashboard']);
+          break;
+        case 'student1':
+          this.router.navigate(['/student/dashboard']);
+          break;
+        default:
+          this.loginError = true;
+          break;
       }
     } else {
-      console.log("Invalid credentials");
       this.loginError = true;
     }
   }

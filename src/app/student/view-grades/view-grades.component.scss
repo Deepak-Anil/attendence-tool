@@ -1,0 +1,55 @@
+.grades-summary {
+  h3 {
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    i {
+      color: #4299e1;
+    }
+  }
+}
+
+.grades-table {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    th {
+      background-color: #F7FAFC;
+      color: #4A5568;
+      font-weight: 600;
+    }
+
+    .grade-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-weight: 500;
+
+      &.excellent {
+        background: #C6F6D5;
+        color: #22543D;
+      }
+
+      &.good {
+        background: #BEE3F8;
+        color: #2C5282;
+      }
+
+      &.average {
+        background: #FEEBC8;
+        color: #744210;
+      }
+    }
+  }
+} 

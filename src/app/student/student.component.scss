@@ -32,3 +32,109 @@
     background-color: #1976D2;
   }
   
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .content-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    h3 {
+      margin-bottom: 1rem;
+      color: #2d3748;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  
+      i {
+        color: #4299e1;
+      }
+    }
+  }
+  
+  .course-list {
+    .course-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e2e8f0;
+  
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  
+    .course-info {
+      .course-name {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+    }
+  
+    .progress-bar {
+      background: #edf2f7;
+      border-radius: 9999px;
+      height: 8px;
+      overflow: hidden;
+  
+      .progress {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.75rem;
+  
+        &.good { background-color: #48bb78; }
+        &.warning { background-color: #ecc94b; }
+        &.danger { background-color: #f56565; }
+      }
+    }
+  }
+  
+  .schedule-list {
+    .schedule-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e2e8f0;
+  
+      &:last-child {
+        border-bottom: none;
+      }
+  
+      .time {
+        min-width: 80px;
+        color: #4a5568;
+        font-weight: 500;
+      }
+  
+      .class-info {
+        flex: 1;
+  
+        .class-name {
+          font-weight: 500;
+          margin-bottom: 0.25rem;
+        }
+  
+        .class-details {
+          display: flex;
+          gap: 1rem;
+          color: #718096;
+          font-size: 0.875rem;
+  
+          span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+  

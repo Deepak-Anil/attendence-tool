@@ -4,7 +4,7 @@
       <h1>Admin Dashboard</h1>
       <div class="user-info">
         <span class="user-name">Admin</span>
-        <button routerLink="/" class="logout-btn">
+        <button [routerLink]="['/']" class="logout-btn">
           <i class="fas fa-sign-out-alt"></i> Logout
         </button>
       </div>
@@ -39,19 +39,19 @@
       <div class="action-card">
         <h3>Quick Actions</h3>
         <div class="action-buttons">
-          <button class="action-btn">
+          <button class="action-btn" (click)="addNewStudent()">
             <i class="fas fa-user-plus"></i>
             Add New Student
           </button>
-          <button class="action-btn">
+          <button class="action-btn" (click)="addNewFaculty()">
             <i class="fas fa-user-tie"></i>
             Add New Faculty
           </button>
-          <button class="action-btn">
+          <button class="action-btn" (click)="addNewCourse()">
             <i class="fas fa-book-medical"></i>
             Add New Course
           </button>
-          <button class="action-btn">
+          <button class="action-btn" (click)="generateReports()">
             <i class="fas fa-file-alt"></i>
             Generate Reports
           </button>

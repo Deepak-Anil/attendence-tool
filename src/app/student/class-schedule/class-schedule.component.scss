@@ -1,0 +1,79 @@
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.schedule-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #4299e1;
+  }
+}
+
+.day-schedule {
+  .class-block {
+    padding: 1rem;
+    border-bottom: 1px solid #E2E8F0;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .time-slot {
+      color: #4299e1;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .class-details {
+      .subject {
+        font-weight: 500;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+      }
+
+      .info {
+        display: flex;
+        gap: 1rem;
+        color: #718096;
+        font-size: 0.875rem;
+
+        span {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          i {
+            color: #4299e1;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      background-color: #F7FAFC;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .class-details .info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+} 

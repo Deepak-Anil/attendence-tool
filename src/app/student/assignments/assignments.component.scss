@@ -1,0 +1,99 @@
+.assignments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .assignment-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    .assignment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+  
+      h3 {
+        color: #2d3748;
+        margin: 0;
+      }
+  
+      .status-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.875rem;
+        font-weight: 500;
+  
+        &.pending {
+          background: #FEF3C7;
+          color: #92400E;
+        }
+  
+        &.submitted {
+          background: #C6F6D5;
+          color: #22543D;
+        }
+      }
+    }
+  
+    .assignment-content {
+      h4 {
+        color: #4A5568;
+        margin: 0 0 0.5rem 0;
+      }
+  
+      p {
+        color: #718096;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+  
+      .due-date {
+        color: #E53E3E;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+  
+    .assignment-actions {
+      display: flex;
+      gap: 1rem;
+  
+      button {
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        border: none;
+        font-size: 0.875rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+  
+        &.action-btn {
+          background: #4299E1;
+          color: white;
+  
+          &:hover {
+            background: #3182CE;
+          }
+        }
+  
+        &.view-btn {
+          background: #EDF2F7;
+          color: #4A5568;
+  
+          &:hover {
+            background: #E2E8F0;
+          }
+        }
+      }
+    }
+  }

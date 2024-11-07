@@ -3,8 +3,8 @@
     <div class="header-content">
       <h1>Faculty Dashboard</h1>
       <div class="user-info">
-        <span class="user-name">Professor</span>
-        <button routerLink="/" class="logout-btn">
+        <span class="user-name">Faculty</span>
+        <button (click)="logout()" class="logout-btn">
           <i class="fas fa-sign-out-alt"></i> Logout
         </button>
       </div>
@@ -14,22 +14,22 @@
   <div class="dashboard-content">
     <div class="stats-grid">
       <div class="stat-card">
-        <i class="fas fa-user-graduate"></i>
-        <h3>My Students</h3>
+        <i class="fas fa-users"></i>
+        <h3>Total Students</h3>
         <p class="stat-number">45</p>
       </div>
       <div class="stat-card">
         <i class="fas fa-book"></i>
-        <h3>My Courses</h3>
+        <h3>Courses</h3>
         <p class="stat-number">3</p>
       </div>
       <div class="stat-card">
-        <i class="fas fa-calendar-check"></i>
-        <h3>Today's Classes</h3>
+        <i class="fas fa-clock"></i>
+        <h3>Classes Today</h3>
         <p class="stat-number">4</p>
       </div>
       <div class="stat-card">
-        <i class="fas fa-chart-line"></i>
+        <i class="fas fa-calendar-check"></i>
         <h3>Attendance Rate</h3>
         <p class="stat-number">92%</p>
       </div>
@@ -39,21 +39,13 @@
       <div class="action-card">
         <h3>Quick Actions</h3>
         <div class="action-buttons">
-          <button class="action-btn">
-            <i class="fas fa-clipboard-check"></i>
+          <button class="action-btn" (click)="viewAttendance()">
+            <i class="fas fa-clipboard-list"></i>
             Mark Attendance
           </button>
-          <button class="action-btn">
-            <i class="fas fa-file-alt"></i>
+          <button class="action-btn" (click)="viewReports()">
+            <i class="fas fa-chart-bar"></i>
             View Reports
-          </button>
-          <button class="action-btn">
-            <i class="fas fa-calendar-alt"></i>
-            Schedule Class
-          </button>
-          <button class="action-btn">
-            <i class="fas fa-comments"></i>
-            Send Notification
           </button>
         </div>
       </div>
