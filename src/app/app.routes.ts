@@ -9,10 +9,23 @@ import { ViewAttendanceComponent } from './student/view-attendance/view-attendan
 import { ViewGradesComponent } from './student/view-grades/view-grades.component';
 import { ClassScheduleComponent } from './student/class-schedule/class-schedule.component';
 import { AssignmentsComponent } from './student/assignments/assignments.component';
+import { AddCourseComponent } from './admin/add-course/add-course.component';
+import { AddFacultyComponent } from './admin/add-faculty/add-faculty.component';
+import { AddStudentComponent } from './admin/add-student/add-student.component';
+import { ReportsComponent } from './admin/reports/reports.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
-    { path: 'admin', component: AdminComponent },
+    { path: 'admin',  
+        children:[
+            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            { path: 'dashboard', component: AdminComponent },
+            { path: 'add-course', component: AddCourseComponent},
+            { path: 'add-faculty', component:AddFacultyComponent},
+            { path: 'add-student', component:AddStudentComponent},
+            { path: 'reports', component: ReportsComponent}
+        ]
+    },
     {
         path: 'faculty',
         children: [
@@ -27,7 +40,9 @@ export const routes: Routes = [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: StudentComponent },
             { path: 'schedule', component: ClassScheduleComponent },
-            { path: 'assignments', component: AssignmentsComponent }
+            { path: 'assignments', component: AssignmentsComponent },
+            { path: 'grades', component: ViewGradesComponent},
+            { path: 'attendance', component: ViewAttendanceComponent}
         ]
     },
     { path: '**', redirectTo: '' }
