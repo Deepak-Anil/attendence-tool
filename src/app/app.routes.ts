@@ -13,9 +13,11 @@ import { AddCourseComponent } from './admin/add-course/add-course.component';
 import { AddFacultyComponent } from './admin/add-faculty/add-faculty.component';
 import { AddStudentComponent } from './admin/add-student/add-student.component';
 import { ReportsComponent } from './admin/reports/reports.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
+    { path: 'signup', component: SignupComponent },
     { path: 'admin',  
         children:[
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

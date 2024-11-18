@@ -1,0 +1,140 @@
+<div class="signup-wrapper">
+  <div class="signup-container">
+    <div class="logo-section">
+      <h1>Student Attendance</h1>
+      <p class="subtitle">Management System</p>
+    </div>
+    
+    <form (ngSubmit)="onSignup(signupForm)" #signupForm="ngForm" class="signup-form">
+      <div class="input-group">
+        <label for="fullName">Full Name</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user"></i>
+          <input 
+            id="fullName" 
+            name="fullName"
+            [(ngModel)]="user.fullName"
+            type="text" 
+            placeholder="Enter your full name"
+            required 
+            #fullName="ngModel"
+          />
+        </div>
+        <div class="error-message" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+          Full name is required
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope"></i>
+          <input 
+            id="email" 
+            name="email"
+            [(ngModel)]="user.email"
+            type="email" 
+            placeholder="Enter your email"
+            required 
+            email
+            #email="ngModel"
+          />
+        </div>
+        <div class="error-message" *ngIf="email.invalid && (email.dirty || email.touched)">
+          Please enter a valid email
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="username">Username</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user-circle"></i>
+          <input 
+            id="username" 
+            name="username"
+            [(ngModel)]="user.username"
+            type="text" 
+            placeholder="Choose a username"
+            required 
+            #username="ngModel"
+          />
+        </div>
+        <div class="error-message" *ngIf="username.invalid && (username.dirty || username.touched)">
+          Username is required
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="role">Role</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user-tag"></i>
+          <select 
+            id="role"
+            name="role"
+            [(ngModel)]="user.role"
+            required
+            #role="ngModel"
+          >
+            <option value="">Select Role</option>
+            <option value="student">Student</option>
+            <option value="faculty">Faculty</option>
+          </select>
+        </div>
+        <div class="error-message" *ngIf="role.invalid && (role.dirty || role.touched)">
+          Please select a role
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input 
+            id="password" 
+            name="password"
+            [(ngModel)]="user.password"
+            type="password" 
+            placeholder="Enter your password"
+            required 
+            #password="ngModel"
+          />
+        </div>
+        <div class="error-message" *ngIf="password.invalid && (password.dirty || password.touched)">
+          Password is required
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input 
+            id="confirmPassword" 
+            name="confirmPassword"
+            [(ngModel)]="user.confirmPassword"
+            type="password" 
+            placeholder="Confirm your password"
+            required 
+            #confirmPassword="ngModel"
+          />
+        </div>
+        <div class="error-message" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+          Please confirm your password
+        </div>
+      </div>
+
+      <button type="submit" class="signup-button" [disabled]="!signupForm.form.valid">
+        Sign Up
+      </button>
+
+      <div *ngIf="signupError" class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        {{signupError}}
+      </div>
+    </form>
+
+    <div class="signup-footer">
+      <p>Already have an account? <a routerLink="/">Login here</a></p>
+    </div>
+  </div>
+</div> 
