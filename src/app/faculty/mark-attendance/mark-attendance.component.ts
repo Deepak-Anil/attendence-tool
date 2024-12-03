@@ -1,16 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AttendanceService } from '../../services/attendance.service';
 
 @Component({
   selector: 'app-mark-attendance',
-  standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './mark-attendance.component.html',
-  styleUrls: ['./mark-attendance.component.scss', '../../shared/_dashboard.scss']
+  styleUrls: ['./mark-attendance.component.scss']
 })
-export class MarkAttendanceComponent {
+export class MarkAttendanceComponent implements OnInit {
   students = [
     { id: 1, name: 'John Doe', present: false },
     { id: 2, name: 'Jane Smith', present: false },
@@ -20,12 +17,30 @@ export class MarkAttendanceComponent {
   selectedCourse = '';
   courses = ['Web Development', 'Database Systems', 'Software Engineering'];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private attendanceService: AttendanceService
+  ) {}
+
+  ngOnInit() {
+    // Load courses and students from backend
+  }
 
   submitAttendance() {
-    console.log('Attendance submitted:', this.students);
-    alert('Attendance marked successfully!');
-    this.router.navigate(['/faculty']);
+    const attendanceData = this.students.reduce((acc, student) => {
+      acc[student.id] = student.present;
+      return acc;
+    }, {} as {[key: number]: boolean});
+
+    this.attendanceService.markAttendance(1, attendanceData).subscribe({
+      next: () => {
+        alert('Attendance marked successfully!');
+        this.router.navigate(['/faculty']);
+      },
+      error: (error) => {
+        alert('Failed to mark attendance: ' + error.message);
+      }
+    });
   }
 
   markAll(status: boolean) {
