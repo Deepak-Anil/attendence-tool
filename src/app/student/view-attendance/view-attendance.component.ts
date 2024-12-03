@@ -1,49 +1,35 @@
-import { Component } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AttendanceService } from '../../services/attendance.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-view-attendance',
-  standalone: true,
-  imports: [RouterLink, CommonModule],
   templateUrl: './view-attendance.component.html',
-  styleUrls: ['./view-attendance.component.scss', '../../shared/_dashboard.scss']
+  styleUrls: ['./view-attendance.component.scss']
 })
-export class ViewAttendanceComponent {
-  attendanceData = [
-    { 
-      subject: 'Web Development',
-      total: 45,
-      present: 43,
-      percentage: 95.6
-    },
-    { 
-      subject: 'Database Systems',
-      total: 40,
-      present: 32,
-      percentage: 80.0
-    },
-    { 
-      subject: 'Software Engineering',
-      total: 38,
-      present: 28,
-      percentage: 73.7
-    },
-    { 
-      subject: 'Computer Networks',
-      total: 42,
-      present: 24,
-      percentage: 57.1
-    },
-    { 
-      subject: 'Operating Systems',
-      total: 36,
-      present: 32,
-      percentage: 88.9
-    }
-  ];
+export class ViewAttendanceComponent implements OnInit {
+  attendanceData: any[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private attendanceService: AttendanceService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    const currentUser = this.authService.getCurrentUser();
+    if (currentUser) {
+      this.attendanceService.getStudentAttendance(currentUser.id).subscribe({
+        next: (data) => {
+          this.attendanceData = data;
+        },
+        error: (error) => {
+          console.error('Failed to load attendance:', error);
+        }
+      });
+    }
+  }
 
   goBack() {
     this.router.navigate(['/student/dashboard']);
